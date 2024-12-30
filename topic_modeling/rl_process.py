@@ -28,11 +28,7 @@ def episode_loop(CTP1, CTP2):
             # In a real scenario, you would update CTP1 and CTP2 here with new keywords, etc.
             CTP1 = CTP2  # This is a placeholder for the topic model update logic
             print("Proceeding to Next Iteration.")
-                   
-        # Transition to the next iteration
-        CTP1 = CTP2
-        CTP2 = new_state
-        
+                          
 def compare_models(CTP1, CTP2):
     # Compare models and define current state
     return "Current State"
