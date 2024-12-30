@@ -1,20 +1,28 @@
-# Q-learning Topic Selection for Topic Modeling
+# Topic Modeling and Reinforcement Learning
 
-This repository demonstrates the application of Q-learning to refine and select topics in a topic modeling task. The process is iterative, and each iteration involves applying domain-specific aspect-based refinement to improve topic models.
+This repository demonstrates the application of topic modeling and reinforcement learning for improving the discovery of novel insights in a given domain.
 
-## Phases:
+## Phases
 
-1. **Data Collection**: Collect documents and preprocess them based on expert-defined keywords.
-2. **Applying the Method**: Use LDA to generate an initial topic model, then refine it iteratively with aspect-based keywords.
-3. **Reinforcement Learning Process**: Use Q-learning to compare, select, and refine topics based on reward signals and entropy comparisons.
-4. **Analysis**: Analyze the results using techniques like heatmap comparisons, cosine similarity, and technology vision identification.
+1. **Data Collection**: Define search keywords and build a corpus.
+2. **Applying the Method**: Perform topic modeling and refine it using aspect-based keywords.
+3. **Reinforcement Learning**: Use RL to improve the topic model by adjusting states based on rewards.
+4. **Analysis**: Analyze and fine-tune the topic models.
 
 ## Requirements
 
-- Python 3.x
-- NumPy
-- Scikit-learn
+- numpy
+- pandas
+- gensim
+- scikit-learn
+- nltk
+- matplotlib
+- seaborn
+- tensorflow
 
-To install dependencies:
+## Usage
+
+Run the `main.py` script to initiate the topic modeling and RL process.
+
 ```bash
-pip install numpy scikit-learn
+python main.py
