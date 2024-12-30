@@ -17,25 +17,22 @@ def episode_loop(CTP1, CTP2):
 
 
         # Step 14 & 15 & 16: Analysis of selected topics
-        analysis.compare
-        if analysis. > 0.8:
-            print("End Episode: Novel Patterns Identified.")
-            break
-        else:
-            print("Proceeding to Next Iteration.")
-
+        # Perform the analysis phase (finding novelty)
+        expert_decision = analyze_topics(QCrypt_data, CTP1, CTP2, seleted_topics, q-table)
         
-        # Transition to next iteration
+        if expert_decision == "stop":
+            print("Episode stopped. Novelty reached.")
+            break  # End the RL loop if novelty is reached
+        else:
+            # Update CTP1 and CTP2 based on further refinements (next iteration)
+            # In a real scenario, you would update CTP1 and CTP2 here with new keywords, etc.
+            CTP1 = CTP2  # This is a placeholder for the topic model update logic
+            print("Proceeding to Next Iteration.")
+                   
+        # Transition to the next iteration
         CTP1 = CTP2
         CTP2 = new_state
         
-        # Placeholder for checking novelty
-        if reward > 0.8:
-            print("End Episode: Novel Patterns Identified.")
-            break
-        else:
-            print("Proceeding to Next Iteration.")
-
 def compare_models(CTP1, CTP2):
     # Compare models and define current state
     return "Current State"
