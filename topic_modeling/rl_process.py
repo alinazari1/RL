@@ -15,6 +15,16 @@ def episode_loop(CTP1, CTP2):
         # Step 13: Update RL model
         update_rl_model(action, reward)
 
+
+        # Step 14 & 15 & 16: Analysis of selected topics
+        analysis.compare
+        if analysis. > 0.8:
+            print("End Episode: Novel Patterns Identified.")
+            break
+        else:
+            print("Proceeding to Next Iteration.")
+
+        
         # Transition to next iteration
         CTP1 = CTP2
         CTP2 = new_state
