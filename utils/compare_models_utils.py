@@ -55,9 +55,5 @@ def compare_models(CTP1, CTP2):
     entropy_CTP1 = calculate_entropy(CTP1)
     entropy_CTP2 = calculate_entropy(CTP2)
     entropy_changes = entropy_CTP2 - entropy_CTP1
-    
-    # Identify Top 5 Topics with Highest Entropy Changes in CTP2
-    top_5_indices = np.argsort(entropy_changes)[-5:][::-1]  # Descending order
-    top_5_topics = [(idx, entropy_changes[idx]) for idx in top_5_indices]
-          
-    return cosine_sim_matrix, abs_diff_matrix, entropy_changes, top_5_topics
+             
+    return cosine_sim_matrix, abs_diff_matrix, entropy_changes
