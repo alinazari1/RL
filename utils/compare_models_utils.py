@@ -47,41 +47,17 @@ def compare_models(CTP1, CTP2):
     """
     # Cosine Similarity Matrix
     cosine_sim_matrix = calculate_cosine_similarity(CTP1, CTP2)
-    print("Cosine Similarity Matrix:")
-    print(cosine_sim_matrix)
     
     # Absolute Difference in Normalized Sums Matrix
     abs_diff_matrix = calculate_absolute_difference(CTP1, CTP2)
-    print("Absolute Difference in Normalized Sums Matrix:")
-    print(abs_diff_matrix)
     
     # Entropy for CTP1 and CTP2
     entropy_CTP1 = calculate_entropy(CTP1)
     entropy_CTP2 = calculate_entropy(CTP2)
     entropy_changes = entropy_CTP2 - entropy_CTP1
-    print("Entropy Changes:")
-    print(entropy_changes)
     
     # Identify Top 5 Topics with Highest Entropy Changes in CTP2
     top_5_indices = np.argsort(entropy_changes)[-5:][::-1]  # Descending order
     top_5_topics = [(idx, entropy_changes[idx]) for idx in top_5_indices]
-    print("Top 5 Topics with Highest Entropy Changes in CTP2:")
-    for idx, entropy_change in top_5_topics:
-        print(f"Topic {idx}: Entropy Change = {entropy_change}")
-    
-    # Define Current State (Example Decision Logic)
-    if np.mean(entropy_changes) > 0.1:  # Arbitrary threshold for novelty
-        current_state = "Novelty Detected"
-    else:
-        current_state = "Stable Topics"
-    
+          
     return cosine_sim_matrix, abs_diff_matrix, entropy_changes, top_5_topics
-
-# Example Usage
-if __name__ == "__main__":
-    # Example Topic Models
-    CTP1 = np.random.rand(10, 5)  # 10 topics, 5 words each
-    CTP2 = np.random.rand(10, 5)  # 10 topics, 5 words each
-    
-    cosine_sim_matrix, abs_diff_matrix, entropy_changes, top_5_topics = compare_models(CTP1, CTP2)
-    print("Current State:", current_state)
