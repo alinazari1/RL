@@ -71,7 +71,8 @@ def get_aspect_tm(CTP1, weighted_keywords):
 
 def compare_models(CTP1, CTP2):
     # Compare models and define current state
-    return "Current State"
+    return cosine_sim_matrix, abs_diff_matrix, entropy_changes, top_5_topics = compare_models(CTP1, CTP2)
+    
 
 def find_topics(current_state):
     # Based on entropy and state, select action
