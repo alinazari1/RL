@@ -71,7 +71,7 @@ def get_aspect_tm(CTP1, weighted_keywords):
 
 def compare_models(CTP1, CTP2):
     # Compare models and define current state
-    return cosine_sim_matrix, abs_diff_matrix, entropy_changes, top_5_topics = utils.compare_models_utils.compare_models(CTP1, CTP2)
+    return cosine_sim_matrix, abs_diff_matrix, entropy_changes, top_5_topics = compare_models_utils.compare_models(CTP1, CTP2)
     
 
 def find_topics(current_state):
