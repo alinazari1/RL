@@ -4,7 +4,7 @@ import numpy as np
 def episode_loop(CTP1, CTP2):
     while True:
         # Step 9: Compare models
-        current_state = compare_models(CTP1, CTP2)
+        cosine_sim_matrix, abs_diff_matrix, entropy_changes, top_5_topics = compare_models(CTP1, CTP2)
 
         # Step 10: Find topics based on current state
         action = find_topics(current_state)
@@ -17,7 +17,6 @@ def episode_loop(CTP1, CTP2):
 
         # Step 13: Update RL model
         update_rl_model(action, reward)
-
 
         # Step 14 & 15 & 16: Analysis of selected topics
         # Perform the analysis phase (finding novelty)
