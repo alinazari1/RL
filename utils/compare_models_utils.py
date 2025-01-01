@@ -1,5 +1,6 @@
 import numpy as np
 from scipy.spatial.distance import cosine
+from sklearn.metrics.pairwise import cosine_similarity
 
 def calculate_cosine_similarity(CTP1, CTP2):
     """
@@ -57,3 +58,38 @@ def compare_models(CTP1, CTP2):
     entropy_changes = entropy_CTP2 - entropy_CTP1
              
     return cosine_sim_matrix, abs_diff_matrix, entropy_changes
+
+# Function to calculate the base reward
+def calculate_base_reward(topic, documents, threshold=0.7):
+    base_reward = 0
+    d = len(documents)
+    for doc in documents:
+        similarity = calculate_cosine_similarity(topic, doc)
+        if similarity > threshold:
+            base_reward += similarity
+    return base_reward / d
+
+# Function to update Q-values based on entropy and base reward
+def cal_q_values(Q, topics, documents, alpha=0.1, gamma=0.9, lambda_entropy=0.5):
+    updated_q_values = []
+    for topic in topics:
+        # Calculate the entropy change for the topic
+        entropy = calculate_entropy(topic['distribution'])  # Assuming topic['distribution'] holds the topic's word distribution
+        
+        # Calculate the base reward from cosine similarity
+        base_reward = calculate_base_reward(topic['vector'], documents)
+        
+        # Calculate total reward
+        reward = base_reward + lambda_entropy * entropy
+        
+        # Get the Q-value for this topic (previous Q-value + reward + max future Q-value)
+        best_future_q = max([Q.get(t, 0) for t in topics])  # Max Q-value for future topics
+        updated_q = (1 - alpha) * Q.get(topic['id'], 0) + alpha * (reward + gamma * best_future_q)
+        
+        updated_q_values.append((topic['id'], updated_q))
+    
+    # Sort topics by Q-value
+    updated_q_values.sort(key=lambda x: x[1], reverse=True)
+    
+    # Return top 5 topics with highest Q-values
+    return updated_q_values[:5]
