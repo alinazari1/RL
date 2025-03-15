@@ -1,26 +1,28 @@
 Adaptive Topic Modeling with Reinforcement Learning and Expert-in-the-Loop - Mermaid Code:
 graph TD;
-    classDef myClassLeave fill:#F0F0F0,stroke:#333,stroke-width:1px,font-size:14px,font-weight:bold;
-    classDef myClass fill:#fff,stroke:#333,stroke-width:2px,font-size:20px,font-weight:bold;
-    A[Organizational Learning]:::myClassLeave -->|Enhances| B[Knowledge Integration - Absorptive Capacity];
-    B:::myClassLeave -->|Powered by| C[Machine Learning - Text Analytics];
+  subgraph Three components
+    H[Box H]
+    F[Box F]
+    G[Box G]
+  end
+    classDef myClassLeave fill:#A1A1,stroke:#333,stroke-width:1px,font-size:18px;
+    classDef myClassTop fill:#F0F0F0,stroke:#333,stroke-width:1px,font-size:20px;
+    classDef myClass fill:#fff,stroke:#888,stroke-width:1px,font-size:24px,font-weight:bold;
+    A[Organizational Learning]:::myClassTop -->|Enhances| B[Knowledge Integration - Absorptive Capacity];
+    B:::myClassTop -->|Powered by| C[Machine Learning - Text Analytics];
     
-    C:::myClassLeave -->|Includes| H[Expert-in-the-Loop];
-    C -->|Includes| F[Topic Modeling];
-    C -->|Includes| G[RL Process];
-    
-    
-    F:::myClass -->|Feeds into| G;
-    G:::myClass -->|Refines| F;
+    C:::myClassTop -->|Includes| H[3-Expert-in-the-Loop:<br>Köpf et al.-2023<br>Törnberg-2023<br>Wu et al.-2022];
+    C -->|Includes| F[1-Topic Modeling:<br>Churchill & Singh-2022<br>Chauhan & Shah-2021];
+    C -->|Includes| G[2-RL Process:<br>Khetarpal et al.-2022<br>Keneshloo et al.-2019<br>Wang et al.-2018];
         
-    G -->|Optimizes| J[Dynamic Topic Adaptation];
-    H:::myClass -->|Provides Feedback to| G;
-    H -->|Improves| O[Human-in-the-Loop Systems]; 
-    H -->|Refines| J;
+    F:::myClass -->|Feeds into:<br>Kabudi et al.-2021| G;
+    G:::myClass -->|Refines:<br>Wang et al.-2007| F;
     
-    J:::myClassLeave -->|Enables| K[Strategic Decision-Making];
-    K:::myClassLeave -->|Supports| L[Technology Forecasting];
-
-    F -->|Evolves| M[LDA, CTM, Neural Topic Models];
+    G -->|Optimizes:<br>Kabudi et al.-2021<br>Keneshloo et al.-2019<br>Wang et al.-2018| J[Dynamic Topic Adaptation-><br>Strategic Decision Making-><br>Technology Forecasting];
+    H -->|Refines:<br>Wu et al.-2022| J;
+    H -->|Improves<br>Sarkar-2016| O[Human-in-the-Loop Systems]; 
+    H:::myClass -->|Provides Feedback to <br>Wu et al.-2024| G;
+    G -->|Enhances| N[Adaptive Topic Modeling];        
+    F -->|Evolves| M[LDA, CTM, Neural Topic Models];    
     F -->|Extracts| I[Latent Themes];
-    G -->|Enhances| N[Adaptive Topic Modeling];
+  
